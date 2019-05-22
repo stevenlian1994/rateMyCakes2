@@ -1,0 +1,19 @@
+
+    img{
+        width:200px;
+        height:200px;
+    }
+    .main-container{
+        height:350px;
+        overflow:scroll;
+    }
+    .review-container{
+        border: 1px solid black;
+        width:500px;
+    }
+    .review-content{
+        width:225px;
+        vertical-align: top;
+        display:inline-block;
+        
+    }

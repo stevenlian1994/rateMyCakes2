@@ -1,0 +1,6 @@
+<h1>Baked by {{cakeToShow.baker}}</h1>
+<img src="{{cakeToShow.image_url}}" alt="">
+<p *ngIf=avgRating >average: {{avgRating}}</p>
+<div *ngFor="let review of cakeToShow.reviews">
+    <p>{{review.comment}} : {{review.rating}} stars <button (click)="deleteReview(cakeToShow,review)">delete</button></p>
+</div>

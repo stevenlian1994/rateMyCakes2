@@ -1,0 +1,29 @@
+<h1>Rate my cakes</h1>
+<form (submit)="createCake()">
+    <p *ngIf="booleanError">Baker name and image_url needs more than 3 characters</p>
+    <label for="name"> Baker's Name: 
+        <input [(ngModel)]="newCake.baker" type="text" name="newCake.baker"> 
+    </label><br>
+    <label for="image_url"> Image URL:
+        <input [(ngModel)]="newCake.image_url" type="text" name="newCake.image_url">
+    </label><br>
+    <input type="submit" value="Submit">
+</form>
+<div class="main-container">
+    <div class="review-container" *ngFor="let cake of allCakes">
+        <img class="review-content" (click)="selectCake(cake)" [routerLink]="['cake']" src="{{cake.image_url}}" alt="">
+        <form class="review-content" (submit)="createReview(cake)">
+            <select [(ngModel)]="newReview.rating"  name="newReview.rating">
+                <option value="5">5 stars</option>
+                <option value="4">4 stars</option>
+                <option value="3">3 stars</option>
+                <option value="2">2 stars</option>
+                <option value="1">1 stars</option>
+            </select> <br>
+            <textarea [(ngModel)]="newReview.comment" name="newReview.comment" id="" cols="30" rows="3" placeholder="Type your comment here"></textarea>
+            <input type="submit" value="Rate!">
+        </form>
+    </div>
+</div>
+<app-cake  *ngIf = "selectedCake" [avgRating] = "average_rating" [cakeToShow]="selectedCake"></app-cake> 
+<!-- <router-outlet *ngIf="selectedCake" [cakeToShow]="selectedCake"></router-outlet> -->
